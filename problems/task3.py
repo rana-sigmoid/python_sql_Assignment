@@ -12,19 +12,20 @@ import connectdb
 class Task3:
     def task3(self,cursor):
         try:
-            engine = create_engine("postgresql+psycopg2://demo_user:demo@1234@localhost:5432/demo_database1")
+            engine = create_engine("postgresql://demo_user:demo%401234@localhost:5432/demo_database1")
 
             logging.debug(f"Successfully create engine  - {engine}")
         except:
             logging.error("failed to create engine")
 
-        with pd.ExcelFile("../task2.xlsx") as xls:
+        with pd.ExcelFile("../Output/task2.xlsx") as xls:
             df = pd.read_excel(xls)
-            try:
-                df.to_sql(name="task2_table", con=engine, if_exists="replace", index=False)
-                logging.debug("table is created from the excel file and data successfulyy uploaded")
-            except:
-                logging.debug("Exception occurred while uploading data to table")
+
+            df.to_sql(name="task2_table", con=engine, if_exists="replace", index=False)
+            logging.debug("table is created from the excel file and data successfulyy uploaded")
+
+            logging.debug("Exception occurred while uploading data to table")
+
         query = "select * from task2_table"
         cursor.execute(query)
         query_result = cursor.fetchall()
