@@ -34,7 +34,7 @@ class Task1:
         df = pd.DataFrame(query_result)
 
         try:
-            path = "/task1.xlsx"
+            path = "/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/Output/task1.xlsx"
             # adding data to excel file
             df.to_excel(path, header=False, index=False)
             logging.info(f"Dataframe converted to excel stored in location -{path}")
