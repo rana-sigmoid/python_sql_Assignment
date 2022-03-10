@@ -25,7 +25,7 @@ class Task1:
         # extracting all data from cursor
         query_result = cursor.fetchall()
 
-        # print(query_result)
+        print(query_result)
 
         # inserting header in query result
         query_result.insert(0, [cursor.description[i].name for i in range(len(cursor.description))])
@@ -33,13 +33,15 @@ class Task1:
         # creating dataframe from data (list_type)
         df = pd.DataFrame(query_result)
 
-        try:
-            path = "/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/Output/task1.xlsx"
-            # adding data to excel file
-            df.to_excel(path, header=False, index=False)
-            logging.info(f"Dataframe converted to excel stored in location -{path}")
-        except:
-            logging.error(f"Unable to convert dataframe to excel in location - {path}")
+
+        #path = "/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/Output/task1.xlsx"
+        # adding data to excel file
+
+        writer = pd.ExcelWriter('/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/Output/task1.xlsx')
+        df.to_excel(writer, header=False, index=False)
+        writer.save()
+        #logging.info(f"Dataframe converted to excel stored in location -{path}")
+
 if __name__ == "__main__":
     obj = connectdb.connection_postgresql()
     cursor = obj.connect_db()
