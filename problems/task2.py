@@ -40,7 +40,7 @@ class Task2:
         # creating dataframe from data (list_type)
         df = pd.DataFrame(query_result)
         try:
-            path = "/task2.xlsx"
+            path = "/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/Output/task2.xlsx"
             # adding data to excel file
             df.to_excel(path, header=False, index=False)
             logging.info(f"Dataframe converted to excel stored in location -{path}")
