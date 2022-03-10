@@ -14,7 +14,7 @@ class Task4:
 
         data = df.groupby('dname').agg({"total_compensation": sum}).reset_index().rename(
             columns={"deptno": "Dept No", "dname": "Dept Name", "total_compensation": "Compensation"})
-        data.to_excel("/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/task4.xlsx", header=True, index=False)
+        data.to_excel("/Users/ranadilendrasingh/PycharmProjects/pythonsqlproject/Output/task4.xlsx", header=True, index=False)
 
         # print(data)
 
